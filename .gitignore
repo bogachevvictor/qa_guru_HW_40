@@ -1,8 +1,26 @@
+# Игнорирование файлов IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+*.png
+target/
+/.gradle
+
+# Временные файлы
+*.log
+*.tmp
+
+# Зависимости
+node_modules/
+dist/
+build/
+.class
+# Конфигурационные файлы
+.env
+
 # Compiled class file
 *.class
-
-# Log file
-*.log
 
 # BlueJ files
 *.ctxt
