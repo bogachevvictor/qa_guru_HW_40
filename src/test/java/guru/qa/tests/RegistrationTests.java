@@ -15,7 +15,6 @@ import static guru.qa.utils.RandomUtils.getRandomSubjects;
 
 public class RegistrationTests extends TestBase {
 
-    HomePage homePage = new HomePage();
     RegistrationPage registrationPage = new RegistrationPage();
     String firstName = getRandomFirstName(),
             lastName = getRandomLastName(),
@@ -39,7 +38,7 @@ public class RegistrationTests extends TestBase {
                 .setDateOfBirth(10, 10, 1989)
                 .setSubject(userSubject)
                 .setHobby(userHobby)
-                .uploadPicture("src/test/data/Image_test.png")
+                .uploadPicture("Image_test.png")
                 .setCurrentAddress(userCurrentAddress)
                 .setState(state)
                 .setCity(city)
@@ -49,7 +48,7 @@ public class RegistrationTests extends TestBase {
                 .checkResult("Student Email", userEmail)
                 .checkResult("Gender",userGender)
                 .checkResult("Mobile",userNumber)
-                .checkResult("Date of Birth",10 + " " + getMonthByNumber(10) + ",1989")
+                .checkResult("Date of Birth",10 + " " + getMonthByNumber(10) + "," + 1989)
                 .checkResult("Subjects",userSubject)
                 .checkResult("Hobbies",userHobby)
                 .checkResult("Picture","Image_test.png")

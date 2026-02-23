@@ -93,7 +93,7 @@ public class RegistrationPage extends HomePage {
     }
 
     public RegistrationPage uploadPicture(String value){
-        userPictureUpload.uploadFile(new File(value));
+        userPictureUpload.uploadFromClasspath(value);
         return this;
     }
 
