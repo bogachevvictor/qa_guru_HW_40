@@ -1,7 +1,6 @@
 package guru.qa.tests;
 
 import guru.qa.TestBase;
-import guru.qa.pages.HomePage;
 import guru.qa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
@@ -17,15 +16,15 @@ public class RegistrationTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     String firstName = getRandomFirstName(),
-            lastName = getRandomLastName(),
-            userEmail = getRandomEmail(),
-            userGender = getRandomGender(),
-            userNumber = getRandomPhone(),
-            userSubject = getRandomSubjects(),
-            userHobby = getRandomHobbies(),
-            userCurrentAddress = getRandomCurrentAddress(),
-            state = getRandomState(),
-            city = getRandomCity(state);
+                lastName = getRandomLastName(),
+                userEmail = getRandomEmail(),
+                userGender = getRandomGender(),
+                userNumber = getRandomPhone(),
+                userSubject = getRandomSubjects(),
+                userHobby = getRandomHobbies(),
+                userCurrentAddress = getRandomCurrentAddress(),
+                state = getRandomState(),
+                city = getRandomCity(state);
 
     @Test
     void successfulRegistrationTest() {

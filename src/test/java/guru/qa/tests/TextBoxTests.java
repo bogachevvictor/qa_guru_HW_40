@@ -7,8 +7,15 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static guru.qa.utils.RandomUtils.*;
+import static guru.qa.utils.RandomUtils.getRandomCity;
 
 public class TextBoxTests {
+
+    String firstName = getRandomFirstName(),
+            userEmail = getRandomEmail(),
+            userCurrentAddress = getRandomCurrentAddress(),
+            userPermanentAddress = getRandomCurrentAddress();
 
     @BeforeAll
     static void beforeAll() {
@@ -22,15 +29,15 @@ public class TextBoxTests {
     @Test
     void fillFormTest() {
         open("/text-box");
-        $("#userName").setValue("Alex");
-        $("#userEmail").setValue("alex@egorov.com");
-        $("#currentAddress").setValue("Some street 1");
-        $("#permanentAddress").setValue("Another street 1");
+        $("#userName").setValue(firstName);
+        $("#userEmail").setValue(userEmail);
+        $("#currentAddress").setValue(userCurrentAddress);
+        $("#permanentAddress").setValue(userPermanentAddress);
         $("#submit").click();
 
-        $("#output #name").shouldHave(text("Alex"));
-        $("#output #email").shouldHave(text("alex@egorov.com"));
-        $("#output #currentAddress").shouldHave(text("Some street 1"));
-        $("#output #permanentAddress").shouldHave(text("Another street 1"));
+        $("#output #name").shouldHave(text(firstName));
+        $("#output #email").shouldHave(text(userEmail));
+        $("#output #currentAddress").shouldHave(text(userCurrentAddress));
+        $("#output #permanentAddress").shouldHave(text(userPermanentAddress));
     }
 }
