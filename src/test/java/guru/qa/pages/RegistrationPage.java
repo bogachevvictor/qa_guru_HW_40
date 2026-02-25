@@ -4,8 +4,6 @@ import com.codeborne.selenide.SelenideElement;
 import guru.qa.pages.components.CalendarComponent;
 import guru.qa.pages.components.ResponsiveTableComponent;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -30,14 +28,6 @@ public class RegistrationPage extends HomePage {
 
     CalendarComponent calendarComponent = new CalendarComponent();
     ResponsiveTableComponent responsiveTableComponent = new ResponsiveTableComponent();
-
-    public RegistrationPage openPage() {
-        open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-        return this;
-    }
 
     public RegistrationPage setFirstName(String value){
         firstNameInput.setValue(value);

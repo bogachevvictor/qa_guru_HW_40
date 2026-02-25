@@ -9,6 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
     private static final Random RANDOM = new Random();
+    private static final Faker FAKER = new Faker();
 
     private static final Map<String, String[]> STATE_CITIES = Map.of(
             "NCR", new String[]{"Delhi", "Gurgaon", "Noida"},
@@ -17,16 +18,20 @@ public class RandomUtils {
             "Rajasthan", new String[]{"Jaipur", "Jaiselmer"}
     );
 
+    private static String getRandomElement(String[] array) {
+        return array[RANDOM.nextInt(array.length)];
+    }
+
     public static String getRandomFirstName() {
-        return new Faker().name().firstName();
+        return FAKER.name().firstName();
     }
 
     public static String getRandomLastName() {
-        return new Faker().name().lastName();
+        return FAKER.name().lastName();
     }
 
     public static String getRandomEmail() {
-        return new Faker().internet().emailAddress();
+        return FAKER.internet().emailAddress();
     }
 
     public static int getRandomInt(int min, int max) {
@@ -35,7 +40,7 @@ public class RandomUtils {
 
     public static String getRandomGender() {
         String[] genders = {"Male", "Female", "Other"};
-        return genders[getRandomInt(0, genders.length - 1)];
+        return getRandomElement(genders);
     }
 
     public static String getRandomPhone() {
@@ -44,20 +49,16 @@ public class RandomUtils {
 
     public static String getRandomSubjects() {
         String[] subjects = {"Hindi", "English", "Maths", "Physics", "Chemistry", "Biology", "Computer Science", "Commerce", "Accounting", "Economics", "Arts", "Social Studies", "History", "Civics"};
-        return subjects[getRandomInt(0, subjects.length - 1)];
+        return getRandomElement(subjects);
     }
 
     public static String getRandomHobbies() {
         String[] hobbies = {"Sports", "Reading", "Music"};
-        return hobbies[getRandomInt(0, hobbies.length - 1)];
+        return getRandomElement(hobbies);
     }
 
     public static String getRandomCurrentAddress() {
-        return new Faker().address().streetAddress();
-    }
-
-    private static String getRandomElement(String[] array) {
-        return array[RANDOM.nextInt(array.length)];
+        return FAKER.address().streetAddress();
     }
 
     public static String getRandomState() {
@@ -70,13 +71,6 @@ public class RandomUtils {
             throw new IllegalArgumentException("Неизвестный штат: " + state);
         }
         return getRandomElement(cities);
-    }
-
-    public static String[] getRandomStateAndCity() {
-        String state = getRandomState();
-        String city = getRandomCity(state);
-
-        return new String[]{state, city};
     }
 
     public static String formatDayWithLeadingZero(int day) {

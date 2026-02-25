@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class ResponsiveTableComponent {
 
     public void checkTable(String key, String value){
-        $(".table-responsive").$(byText(key)).parent().
-                shouldHave(text(value));
+        $(".table-responsive").$(byText(key)).parent()
+                        .shouldHave(text(value));
     }
 }
