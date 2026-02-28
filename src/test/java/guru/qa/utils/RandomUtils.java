@@ -65,7 +65,7 @@ public class RandomUtils {
         return getRandomElement(STATE_CITIES.keySet().toArray(String[]::new));
     }
 
-    public static String getRandomCity(String state) {
+    public static String getRandomCityByState(String state) {
         String[] cities = STATE_CITIES.get(state);
         if (cities == null) {
             throw new IllegalArgumentException("Неизвестный штат: " + state);

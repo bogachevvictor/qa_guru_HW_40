@@ -31,31 +31,26 @@ public class RegistrationPage extends HomePage {
 
     public RegistrationPage setFirstName(String value){
         firstNameInput.setValue(value);
-
         return this;
     }
 
     public RegistrationPage setLastName(String value){
         lastNameInput.setValue(value);
-
         return this;
     }
 
     public RegistrationPage setEmail(String value){
         userEmailInput.setValue(value);
-
         return this;
     }
 
     public RegistrationPage setGender(String value){
         genderWrapper.$(byText(value)).click();
-
         return this;
     }
 
     public RegistrationPage setUserNumber(String value){
         userNumberInput.setValue(value);
-
         return this;
     }
 
@@ -106,7 +101,6 @@ public class RegistrationPage extends HomePage {
 
     public void clickSubmit(){
         submitButton.click();
-
     }
 
     public RegistrationPage checkResult(String key, String value){

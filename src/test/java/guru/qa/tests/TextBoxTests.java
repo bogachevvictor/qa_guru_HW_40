@@ -1,42 +1,31 @@
 package guru.qa.tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+import guru.qa.TestBase;
+import guru.qa.pages.TextBoxPage;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static guru.qa.utils.RandomUtils.*;
 
-public class TextBoxTests {
+public class TextBoxTests extends TestBase {
 
+    TextBoxPage textBoxPage = new TextBoxPage();
     String firstName = getRandomFirstName(),
             userEmail = getRandomEmail(),
             userCurrentAddress = getRandomCurrentAddress(),
             userPermanentAddress = getRandomCurrentAddress();
 
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager";
-//        Configuration.holdBrowserOpen = true;
-        Configuration.timeout = 5000; // default 4000
-    }
 
     @Test
     void fillFormTest() {
-        open("/text-box");
-        $("#userName").setValue(firstName);
-        $("#userEmail").setValue(userEmail);
-        $("#currentAddress").setValue(userCurrentAddress);
-        $("#permanentAddress").setValue(userPermanentAddress);
-        $("#submit").click();
-
-        $("#output #name").shouldHave(text(firstName));
-        $("#output #email").shouldHave(text(userEmail));
-        $("#output #currentAddress").shouldHave(text(userCurrentAddress));
-        $("#output #permanentAddress").shouldHave(text(userPermanentAddress));
+        textBoxPage.openHomePage().openElements().openTextBoxPage()
+                .setFirstName(firstName)
+                .setEmail(userEmail)
+                .setCurrentAddress(userCurrentAddress)
+                .setPermanentAddress(userPermanentAddress)
+                .clickSubmit()
+                .checkResult("name", firstName)
+                .checkResult("email", userEmail)
+                .checkResult("currentAddress", userCurrentAddress)
+                .checkResult("permanentAddress", userPermanentAddress);
     }
 }

@@ -6,11 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static guru.qa.enums.Month.getMonthByNumber;
 import static guru.qa.utils.RandomUtils.*;
-import static guru.qa.utils.RandomUtils.getRandomCurrentAddress;
-import static guru.qa.utils.RandomUtils.getRandomGender;
-import static guru.qa.utils.RandomUtils.getRandomHobbies;
-import static guru.qa.utils.RandomUtils.getRandomPhone;
-import static guru.qa.utils.RandomUtils.getRandomSubjects;
 
 public class RegistrationTests extends TestBase {
 
@@ -24,7 +19,7 @@ public class RegistrationTests extends TestBase {
                 userHobby = getRandomHobbies(),
                 userCurrentAddress = getRandomCurrentAddress(),
                 state = getRandomState(),
-                city = getRandomCity(state);
+                city = getRandomCityByState(state);
 
     @Test
     void successfulRegistrationTest() {

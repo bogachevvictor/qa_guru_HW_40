@@ -15,8 +15,18 @@ public class HomePage {
         return this;
     }
 
+    public HomePage openElements() {
+        $("[href=\"/elements\"]").click();
+        return this;
+    }
+
     public RegistrationPage  openRegistrationPage() {
         $("[href=\"/automation-practice-form\"]").click();
         return new RegistrationPage();
+    }
+
+    public TextBoxPage openTextBoxPage() {
+        open("[href=\"/text-box\"]");
+        return new TextBoxPage();
     }
 }
