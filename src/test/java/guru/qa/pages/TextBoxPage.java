@@ -8,12 +8,12 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TextBoxPage  extends HomePage {
-    public static SelenideElement firstNameInput = $("#userName");
-    public static SelenideElement userEmailInput = $("#userEmail");
-    public static SelenideElement userCurrentAddress = $("#currentAddress");
-    public static SelenideElement userPermanentAddress = $("#permanentAddress");
-    public static SelenideElement submitButton = $("#submit");
-    public static SelenideElement formResultCheck = $("#output");
+    public SelenideElement firstNameInput = $("#userName");
+    public SelenideElement userEmailInput = $("#userEmail");
+    public SelenideElement userCurrentAddress = $("#currentAddress");
+    public SelenideElement userPermanentAddress = $("#permanentAddress");
+    public SelenideElement submitButton = $("#submit");
+    public SelenideElement formResultCheck = $("#output");
 
     public TextBoxPage openTextBoxPage() {
         open("/text-box");
