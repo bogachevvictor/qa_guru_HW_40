@@ -3,6 +3,7 @@ package guru.qa.pages;
 import com.codeborne.selenide.SelenideElement;
 import guru.qa.pages.components.CalendarComponent;
 import guru.qa.pages.components.ResponsiveTableComponent;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -29,88 +30,95 @@ public class RegistrationPage extends HomePage {
     CalendarComponent calendarComponent = new CalendarComponent();
     ResponsiveTableComponent responsiveTableComponent = new ResponsiveTableComponent();
 
+    @Step("Вводим имя {value}")
     public RegistrationPage setFirstName(String value){
         firstNameInput.setValue(value);
         return this;
     }
 
+    @Step("Вводим фамилию {value}")
     public RegistrationPage setLastName(String value){
         lastNameInput.setValue(value);
         return this;
     }
 
+    @Step("Вводим емэйл {value}")
     public RegistrationPage setEmail(String value){
         userEmailInput.setValue(value);
         return this;
     }
 
+    @Step("Вводим гендер {value}")
     public RegistrationPage setGender(String value){
         genderWrapper.$(byText(value)).click();
         return this;
     }
 
+    @Step("Вводим номер телефона {value}")
     public RegistrationPage setUserNumber(String value){
         userNumberInput.setValue(value);
         return this;
     }
 
-//    public RegistrationPage setDateOfBirth(String day, String month, String year){
-//        calendarInput.click();
-//        calendarComponent.setDate(day, month, year);
-//
-//        return this;
-//    }
-
+    @Step("Вводим дату рождения {day} {month} {year}")
     public RegistrationPage setDateOfBirth(int day, int month, int year){
         calendarInput.click();
         calendarComponent.setDate(day, month, year);
         return this;
     }
 
+    @Step("Выбираем предмет {value}")
     public RegistrationPage setSubject(String value){
         subjectInput.setValue(value).pressEnter();
         return this;
     }
 
+    @Step("Выбираем хобби {value}")
     public RegistrationPage setHobby(String value){
         hobbiesWrapper.$(byText(value)).click();
         return this;
     }
 
+    @Step("Загружаем картинку {value}")
     public RegistrationPage uploadPicture(String value){
         userPictureUpload.uploadFromClasspath(value);
         return this;
     }
 
+    @Step("Вводим текущий адрес {value}")
     public RegistrationPage setCurrentAddress(String value){
         userCurrentAddress.setValue(value);
         return this;
     }
 
+    @Step("Выбираем штат {value}")
     public RegistrationPage setState(String value){
         userStateInput.click();
         stateWrapper.shouldBe(visible).$(byText(value)).click();
         return this;
     }
 
+    @Step("Выбираем город {value}")
     public RegistrationPage setCity(String value){
         userCityInput.click();
         cityWrapper.shouldBe(visible).$(byText(value)).click();
         return this;
     }
 
+    @Step("Жмём кнопку подтверждения")
     public void clickSubmit(){
         submitButton.click();
     }
 
+    @Step("Проверяем результирующую таблицу")
     public RegistrationPage checkResult(String key, String value){
         responsiveTableComponent.checkTable(key, value);
         return this;
     }
 
+    @Step("Проверка отсутствия результирующей таблицы")
     public RegistrationPage checkFailResult(){
         validationCheck.shouldHave(cssClass("was-validated")).shouldNotHave(cssClass("table-responsive"));
-//        $("#app").shouldNotHave(cssClass("table-responsive"));
         return this;
     }
 }
