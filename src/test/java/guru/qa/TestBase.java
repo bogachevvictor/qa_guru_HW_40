@@ -27,7 +27,7 @@ public class TestBase {
 //        Configuration.pageLoadStrategy = "eager";
 //        Configuration.holdBrowserOpen = true;
 //        Configuration.timeout = 5000; // default 4000
-        Configuration.remote = "https://user1:1234@selenoid.autotest.cloud/wd/hub";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
